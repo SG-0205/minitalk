@@ -6,19 +6,23 @@
 #    By: sgoldenb <sgoldenb@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/13 14:53:57 by sgoldenb          #+#    #+#              #
-#    Updated: 2024/03/13 16:00:53 by sgoldenb         ###   ########.fr        #
+#    Updated: 2024/03/18 17:16:55 by sgoldenb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+
+NAME = minitalk
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 LDFLAGS = -Lincludes/libft/
 
-all: minitalk minitalk_bonus
+all: minitalk bonus
 
-minitalk: server client
+$(NAME): server client
 
-minitalk_bonus: bonus/server bonus/client
+re: clean fclean all
+
+bonus: bonus/server bonus/client
 
 server: server.o includes/libft/libft.a
 	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS) -lft
